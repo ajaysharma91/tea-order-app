@@ -29,10 +29,12 @@ const TeaControl = (props)=>{
             <Container className="section container">
                 <table>
                     <tr>
-                        <td><span>{props.teaType}</span></td>
+                        <td><h3>{props.teaType}</h3>
+                        <span>Rs.{props.price >0?props.price:""}</span>
+                        <span> Full Cup Tea.</span></td>
                         <td><button onClick={addTea}>More</button></td>
                         <td><button onClick={lessTea}>Less</button></td>
-                        <td><span>{props.noOfTea}</span></td>
+                        <td><span>{props.noOfTea>0?props.noOfTea:""}</span></td>
                     </tr>
                 </table>
             </Container>

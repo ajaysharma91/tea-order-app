@@ -32,18 +32,18 @@ const TeaReducer = (state = initialState, action) => {
         : (state[action.payload] = counttea[action.payload] - 1);
 
       if (action.payload === "greenTea") {
-        tPrice.totalPrice == 0
-          ? (state.totalPrice = 0)
+        (tPrice.totalPrice==0 || tPrice.greenTea==0)
+          ? (state.totalPrice = tPrice.totalPrice)
           : (state.totalPrice = tPrice.totalPrice - state.greenTeaPrice);
         // state.totalPrice = tPrice.totalPrice - state.greenTeaPrice;
       } else if (action.payload === "gingerTea") {
-        tPrice.totalPrice == 0
-          ? (state.totalPrice = 0)
-          : (state.totalPrice = tPrice.totalPrice - state.greenTeaPrice);
+        tPrice.totalPrice==0 || tPrice.gingerTea==0
+          ? (state.totalPrice = tPrice.totalPrice)
+          : (state.totalPrice = tPrice.totalPrice - state.gingerTeaPrice);
       } else {
-        tPrice.totalPrice == 0
-          ? (state.totalPrice = 0)
-          : (state.totalPrice = tPrice.totalPrice - state.greenTeaPrice);
+        tPrice.totalPrice==0 || tPrice.masalaTea==0
+          ? (state.totalPrice = tPrice.totalPrice)
+          : (state.totalPrice = tPrice.totalPrice - state.masalaTeaPrice);
       }
       return { ...state };
     default:
