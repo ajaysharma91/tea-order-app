@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk'
 import TeaReducer from './reducer/TeaReducer';
+import Checkout from './reducer/CheckoutReducer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore(TeaReducer);
+const rootReducer = combineReducers({
+  tea:TeaReducer,
+  costomer:Checkout
+});
+const store = createStore(rootReducer, applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}> <App />
   </Provider>,
